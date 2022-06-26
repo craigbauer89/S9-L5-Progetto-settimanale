@@ -198,3 +198,23 @@ p {
         }
     }
 }
+
+@media only screen and (max-width: 1000px) {
+    div {
+      width: 40%;
+      margin: 5% auto;
+    }
+  }
+
+  @media only screen and (max-width: 800px) {
+    div {
+      width: 60%;
+      margin: 5% auto;
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    div {
+      width: 80%;
+    }
+  }

@@ -12144,4 +12144,24 @@ p {
 .container :nth-child(3) .reset i, .container :nth-child(3) .balance i, .container :nth-child(3) .topup i, .container :nth-child(3) .calllog i {
   color: white;
 }
+
+@media only screen and (max-width: 1000px) {
+  div {
+    width: 40%;
+    margin: 5% auto;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  div {
+    width: 60%;
+    margin: 5% auto;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  div {
+    width: 80%;
+  }
+}
 /*# sourceMappingURL=style.css.map */
