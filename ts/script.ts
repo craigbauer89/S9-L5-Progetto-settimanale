@@ -1,9 +1,3 @@
-
-document.addEventListener('DOMContentLoaded', () => {
-    
-    console.log('Page Loaded');
-});
-
 class Smartphone {
     private _firstname:string; // not needed but can add
     private _balance:number;
@@ -23,14 +17,13 @@ class Smartphone {
 
     get balance():number {
         return this._balance;       
-}
-get calls():number {
-    return this._calls;       
-}
+    }
+    get calls():number {
+        return this._calls;       
+    }
 
     get minutes():number {
             return this._minutes;
-
     }
 
     set minutes(minutes:number) {
@@ -39,80 +32,60 @@ get calls():number {
 
     set balance(balance:number) {
         this._balance = balance;
-}
+    }
 
     public ricarica(unaRicarica:number):void {
-        this._balance += unaRicarica;  //done
+        this._balance += unaRicarica;
     }
 
     public chiamata(minutiDurata:number):void {
-        this._minutes = minutiDurata;//done
-   
-
+        this._minutes = minutiDurata;
     }
 
     public getNumeroChiamate():number {
-        return this._calls++;//done
+        return this._calls++;
     }
 
     public numero404():number {
-        // this._balance =- this.minutes*.2;
-        return (this._balance - this.minutes*.2)  //done
+        return this._balance;
     }
 
     public azzeraChiamate():void {
         this._calls = 0;
         this._balance = 0;
-        this.minutes = 0;  //done
+        this.minutes = 0; 
     }
 }
-let FirstUser = new Smartphone("John" , 100, 0, 0);
-let SecondUser = new Smartphone("Tim" , 200, 0, 0);
-let ThirdUser = new Smartphone("Mary" , 50, 0, 0);
-// console.log("User's Name: " + FirstUser.firstname);
-// console.log("Minutes Used: " + FirstUser.minutes);
-// console.log("User's Balance: " +FirstUser.balance);
-// console.log("Calls used: " + FirstUser.calls);
-// FirstUser.azzeraChiamate();
-// console.log("PHONE RESET - User's Name: " + FirstUser.firstname);
-// console.log("PHONE RESET - Minutes Used: " + FirstUser.minutes);
-// console.log("PHONE RESET - User's Balance: " +FirstUser.balance);
-// console.log("PHONE RESET - Calls used: " + FirstUser.calls);
-// FirstUser.ricarica(200);
-// console.log("Balance after TopUP: "+FirstUser.numero404());
-// console.log("Check the balance variable: " + FirstUser.balance); // same as above
 
-// let minutiDurata:number = FirstUser.minutes;
-// let myInterval =setInterval(function() {    
-//     minutiDurata++
-//     }, 1000)
+let FirstUser = new Smartphone("John" , 50, 0, 0);
+let SecondUser = new Smartphone("Tim" , 20, 0, 0);
+let ThirdUser = new Smartphone("Mary" , 70, 0, 0);
+let users:Smartphone[] = [];
+users.push(FirstUser,SecondUser,ThirdUser)
 
-// let howlongwillthecallbeinmins = 3; 
-
-
-// setTimeout(() => {
-//     clearInterval(myInterval);
-//     FirstUser.getNumeroChiamate();
-   
-//     }, howlongwillthecallbeinmins*1000);
-
-// setTimeout(() => {
-//     FirstUser.minutes = minutiDurata; 
-//     console.log("Total call minutes:" +FirstUser.minutes);
-//     console.log("Total calls:" +FirstUser.calls);
-//     console.log("User's Balance: " +FirstUser.numero404());
-//     }, howlongwillthecallbeinmins*1000);
-
-
-// console.log(FirstUser.balance);
+document.addEventListener('DOMContentLoaded', () => {
+    let json1 = localStorage.getItem('John');
+    if(json1 !== null){
+        users[0] = JSON.parse(json1);
+    }
+    let json2 = localStorage.getItem('Tim');
+    if(json2 !== null){
+        users[1] = JSON.parse(json2);
+    }
+    let json3 = localStorage.getItem('Mary');
+    if(json3 !== null){
+        users[2] = JSON.parse(json3);
+    }
+    console.log(users);
+});
 
 let myInterval:number;
 let minutiDurata:number;
 let secs:number;
 let mins:number;
 let hrs:number;
+let credit:number;
 let CreditAvailable:boolean;
-
 
 function reset2(User:Smartphone) {
     let amount = <HTMLInputElement>document.querySelector('input[name="' + User.firstname + '"]')
@@ -121,90 +94,83 @@ function reset2(User:Smartphone) {
         if(box !== null){
             box.innerHTML = '';
             }  
-    
-    
 }
-
 
 function leadingzero(i:any) {
     if (i < 10) {i = '0'+ i}; 
     return i;
   }
 
-
-
-
 function startcall(User:Smartphone) {
+
+    
     let amount = <HTMLInputElement>document.querySelector('input[name="' + User.firstname + '"]')
-    
-    
         let number = amount.value;
         console.log(number);
         if (number !== '') {
-            
-        
-    // clearInterval(myInterval);
-     if (User.numero404() > 0) {
-        
-
-        let box = document.querySelector('.'+ User.firstname +'');
-        if(box !== null){
-            box.innerHTML = `Calling.......`
-            }   
-            secs = leadingzero(0);
-            mins = leadingzero(0);
-            hrs = leadingzero(0);
-            
-        minutiDurata = User.minutes;
-        minutiDurata++;
-        let credit = User.numero404();
-            setTimeout(() => { myInterval =setInterval(function() {    
-                secs++
-                secs = leadingzero(secs);
-                if (secs >=60) {
-                    minutiDurata++;
-                    credit = credit- .2;
-                    console.log(credit);
-                    secs = leadingzero(0);
-                    mins++;
-                    mins = leadingzero(mins);
-                }
-                if (mins >=60) {
-            
-                    mins = leadingzero(0);
-                    hrs++;
-                    hrs = leadingzero(hrs);
-                }
-                
+            if (User.balance > 0) {
+                let box = document.querySelector('.'+ User.firstname +'');
                 if(box !== null){
-                    box.innerHTML = ` ${hrs} : ${mins} : ${secs}`      
-                    } 
+                    box.innerHTML = `Calling.......`
+                    }   
+                secs = leadingzero(0);
+                mins = leadingzero(0);
+                hrs = leadingzero(0);
+                minutiDurata = User.minutes;
+                minutiDurata++;
+                credit = User.balance - .2;
+                setTimeout(() => { myInterval =setInterval(function() {    
+                    secs++
+                    secs = leadingzero(secs);
+                    if (secs >=60) {
+                        minutiDurata++;
+                        credit = credit- .2;
+                        secs = leadingzero(0);
+                        mins++;
+                        mins = leadingzero(mins);
+                    }
+                    if (mins >=60) {
                 
-                if (credit <= 0) {
-                    endcall(User);
-                    alert("Credit ran out!")
-                }
-                
+                        mins = leadingzero(0);
+                        hrs++;
+                        hrs = leadingzero(hrs);
+                    }
                     
-            }, 1000);
-        },1000) 
-     }
+                    if(box !== null){
+                        box.innerHTML = ` ${hrs} : ${mins} : ${secs}`      
+                        } 
+                    
+                    if (credit <= 0) {
+                        endcall(User);
+                        alert("Credit ran out!")
+                    }  
+                }, 1000);
+            },1000) 
+        }
+        else {
+            alert('Not enough Credit to make call. Please top up')
+        }
+    }   
     else {
-        alert('Not enough Credit to make call. Please top up')
+        alert("must enter a number");
     }
-} else {
-    alert("must enter a number");
-}
 }
 
 function endcall(User:Smartphone) {
-    
-    clearInterval(myInterval);
-    User.getNumeroChiamate();
-    User.minutes = minutiDurata; 
-    printdata(User);
+    let amount = <HTMLInputElement>document.querySelector('input[name="' + User.firstname + '"]')
+    if (amount.value !== '') {
+        console.log(User.balance.toFixed(2));
+        clearInterval(myInterval);
+        User.getNumeroChiamate();
+        User.balance = credit;
+        User.minutes = minutiDurata; 
+        printdata(User);
+    }
+    else {
+        alert('No number called. Please insert number');
+    }
+        
 }
-
 
 function reset(User:Smartphone) {
     let amount = <HTMLInputElement>document.querySelector('input[name="' + User.firstname + '"]')
@@ -212,115 +178,81 @@ function reset(User:Smartphone) {
     clearInterval(myInterval);
     User.azzeraChiamate();
     let box = document.querySelector('.'+ User.firstname +'');
-    // let data = document.createElement('p');
     if(box !== null){
-        box.innerHTML = `
-                        Calls, minutes and balance reset to: ${User.balance}
-                          
-                          `
-                        //   box.append(data);
-                        }                    
-    
+        box.innerHTML = `Calls, minutes and balance reset to: ${User.balance.toFixed(2)}`
+        }                    
+    let json = JSON.stringify(User);
+    localStorage.setItem(''+ User.firstname +'', json);
     
 }
 
-
 function printdata(User:Smartphone) {
-    // cleardata()
     let amount = <HTMLInputElement>document.querySelector('input[name="' + User.firstname + '"]')
     amount.value = `${User.minutes}`;
     let box = document.querySelector('.'+ User.firstname +'');
-    // let data = document.createElement('p');
     if(box !== null){
-        box.innerHTML = `
-                          
-                          Number of minutes:
-                          
-                          `
-                        //   box.append(data);
-                        }                    
-    
+        box.innerHTML = `Total minutes over all calls:`
+        }                    
+    // let json = JSON.stringify(User);
+    // localStorage.setItem(''+ User.firstname +'', json);
 }
 
 function balance(User:Smartphone) {
-    // cleardata()
+    let json1 = localStorage.getItem(''+User+'');
+    if(json1 !== null){
+    User = JSON.parse(json1);
+    // console.log(json1);
+    }
     let amount = <HTMLInputElement>document.querySelector('input[name="' + User.firstname + '"]')
-    amount.value = `${User.numero404()}`
+    amount.value = `${User.balance.toFixed(2)}`
     let box = document.querySelector('.'+ User.firstname +'');
-    // let data = document.createElement('p');
     if(box !== null){
-    box.innerHTML = `
-                     Balance: `
-    // box.append(data);
-                        }                    
-    
+        box.innerHTML = `Balance: `
+    }                    
 }
 
 function calllog(User:Smartphone) {
-    // cleardata()
     let amount = <HTMLInputElement>document.querySelector('input[name="' + User.firstname + '"]')
     amount.value = `${User.calls}`
     let box = document.querySelector('.'+ User.firstname +'');
-    // let data = document.createElement('p');
     if(box !== null){
-    box.innerHTML = `
-                     Calls: `
-    // box.append(data);
-                        }                    
-    
+        box.innerHTML = `Calls: `
+    }                    
 }
-
 
 function topUp(User:Smartphone) {
-
     let box = document.querySelector('.'+ User.firstname +'');
-        if(box !== null){
-            if (box.innerHTML === '') {
-            
-    
-    
-    let amount = <HTMLInputElement>document.querySelector('input[name="' + User.firstname + '"]')
-    
-    if(amount !== null){
-        let number = amount.value;
-        console.log(number);
-        if (number !== '') {
-            User.ricarica(parseInt(number));
-        } else {
+    if(box !== null){
+        if (box.innerHTML === '') {
+            let amount = <HTMLInputElement>document.querySelector('input[name="' + User.firstname + '"]')
+            if(amount !== null){
+                let number = amount.value;
+                console.log(number);
+                if (number !== '') {
+                    User.ricarica(parseInt(number));
+                } else {
+                    alert("must enter a number");
+                }
+                amount.value = `${User.balance.toFixed(2)}`;
+            }
+            if(box !== null){
+                box.innerHTML = `Balance:`
+                // box.append(data);
+                let json = JSON.stringify(User);
+                localStorage.setItem(''+ User.firstname +'', json);
+            }
+        }else { 
+            reset2(User)
             alert("must enter a number");
         }
-        amount.value = `${User.numero404()}`;
-    }
-    // let box = document.querySelector('.'+ User.firstname +'');
-    // let data = document.createElement('p');
-    if(box !== null){
-    box.innerHTML = `Balance:`
-    // box.append(data);
-
+    }  
 }
-}else { 
-    reset2(User)
-alert("must enter a number");
-}
-}  
-}
-
-// function cleardata() {
-//     let box = document.querySelector('.container');
-//     if(box !== null){
-//         if (box.hasChildNodes()) {  
-//             box.removeChild(box);
-//         }
-        
-//     }
-// }
-
 
 function getnumber(User:Smartphone, param:string) {
 	let amount = <HTMLInputElement>document.querySelector('input[name="' + User.firstname + '"]')
     amount.value +=  param;
-
 }
+
 
 
 
