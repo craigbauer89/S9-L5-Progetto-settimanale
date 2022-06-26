@@ -90,10 +90,13 @@ button {
 
 
 
-.reset, .balance, .topup {
+.reset, .balance, .topup, .calllog {
+    width: 19%;
+    margin-left: 4%;
+    
     background-color: white;
     color: grey;
-    font-size: 1rem;
+    font-size: .8rem;
     border-radius: 0;
     margin-top: 10%;
 }
@@ -152,7 +155,7 @@ p {
             color: black;
         }
 
-        .reset, .balance, .topup {
+        .reset, .balance, .topup, .calllog {
             background-color: black;
             color: white;
             
@@ -185,7 +188,7 @@ p {
             color: black;
         }
 
-        .reset, .balance, .topup {
+        .reset, .balance, .topup, .calllog {
             background-color: transparent;
             color: white;
             

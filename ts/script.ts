@@ -256,8 +256,28 @@ function balance(User:Smartphone) {
     
 }
 
+function calllog(User:Smartphone) {
+    // cleardata()
+    let amount = <HTMLInputElement>document.querySelector('input[name="' + User.firstname + '"]')
+    amount.value = `${User.calls}`
+    let box = document.querySelector('.'+ User.firstname +'');
+    // let data = document.createElement('p');
+    if(box !== null){
+    box.innerHTML = `
+                     Calls: `
+    // box.append(data);
+                        }                    
+    
+}
+
 
 function topUp(User:Smartphone) {
+
+    let box = document.querySelector('.'+ User.firstname +'');
+        if(box !== null){
+            if (box.innerHTML === '') {
+            
+    
     
     let amount = <HTMLInputElement>document.querySelector('input[name="' + User.firstname + '"]')
     
@@ -271,13 +291,18 @@ function topUp(User:Smartphone) {
         }
         amount.value = `${User.numero404()}`;
     }
-    let box = document.querySelector('.'+ User.firstname +'');
+    // let box = document.querySelector('.'+ User.firstname +'');
     // let data = document.createElement('p');
     if(box !== null){
     box.innerHTML = `Balance:`
     // box.append(data);
 
 }
+}else { 
+    reset2(User)
+alert("must enter a number");
+}
+}  
 }
 
 // function cleardata() {

@@ -198,24 +198,45 @@ function balance(User) {
         // box.append(data);
     }
 }
-function topUp(User) {
+function calllog(User) {
+    // cleardata()
     let amount = document.querySelector('input[name="' + User.firstname + '"]');
-    if (amount !== null) {
-        let number = amount.value;
-        console.log(number);
-        if (number !== '') {
-            User.ricarica(parseInt(number));
-        }
-        else {
-            alert("must enter a number");
-        }
-        amount.value = `${User.numero404()}`;
-    }
+    amount.value = `${User.calls}`;
     let box = document.querySelector('.' + User.firstname + '');
     // let data = document.createElement('p');
     if (box !== null) {
-        box.innerHTML = `Balance:`;
+        box.innerHTML = `
+                     Calls: `;
         // box.append(data);
+    }
+}
+function topUp(User) {
+    let box = document.querySelector('.' + User.firstname + '');
+    if (box !== null) {
+        if (box.innerHTML === '') {
+            let amount = document.querySelector('input[name="' + User.firstname + '"]');
+            if (amount !== null) {
+                let number = amount.value;
+                console.log(number);
+                if (number !== '') {
+                    User.ricarica(parseInt(number));
+                }
+                else {
+                    alert("must enter a number");
+                }
+                amount.value = `${User.numero404()}`;
+            }
+            // let box = document.querySelector('.'+ User.firstname +'');
+            // let data = document.createElement('p');
+            if (box !== null) {
+                box.innerHTML = `Balance:`;
+                // box.append(data);
+            }
+        }
+        else {
+            reset2(User);
+            alert("must enter a number");
+        }
     }
 }
 // function cleardata() {
