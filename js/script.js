@@ -18,6 +18,9 @@ class Smartphone {
     get minutes() {
         return this._minutes;
     }
+    set firstname(firstname) {
+        this._firstname = firstname;
+    }
     set minutes(minutes) {
         this._minutes = minutes;
     }
@@ -47,7 +50,10 @@ let SecondUser = new Smartphone("Tim", 20, 0, 0);
 let ThirdUser = new Smartphone("Mary", 70, 0, 0);
 let users = [];
 users.push(FirstUser, SecondUser, ThirdUser);
+console.log(users);
 document.addEventListener('DOMContentLoaded', () => {
+    let users = [];
+    users.splice(0, 3);
     let json1 = localStorage.getItem('John');
     if (json1 !== null) {
         users[0] = JSON.parse(json1);
@@ -60,7 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (json3 !== null) {
         users[2] = JSON.parse(json3);
     }
-    console.log(users);
 });
 let myInterval;
 let minutiDurata;
@@ -167,8 +172,8 @@ function printdata(User) {
     if (box !== null) {
         box.innerHTML = `Total minutes over all calls:`;
     }
-    // let json = JSON.stringify(User);
-    // localStorage.setItem(''+ User.firstname +'', json);
+    let json = JSON.stringify(User);
+    localStorage.setItem('' + User.firstname + '', json);
 }
 function balance(User) {
     let json1 = localStorage.getItem('' + User + '');
