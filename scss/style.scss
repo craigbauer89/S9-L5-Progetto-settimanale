@@ -1,2 +1,79 @@
 @import '../node_modules/bootstrap/scss/bootstrap.scss';
-@import '../node_modules/bootstrap-icons/font/bootstrap-icons.scss';
+// @import '../node_modules/bootstrap-icons/font/bootstrap-icons.scss';
+
+
+.container {
+    margin: 5% auto;
+    display: flex;
+    flex-wrap: wrap;
+    border: none;
+}
+
+div {
+    justify-content: space-between;
+    width: 30%;
+    height: 600px;
+    border: 1px solid black;
+    border-radius: 25px;
+
+}
+
+input {
+    width:94%;
+    height: 75px;
+    margin: 10% 3%;
+    border: none;
+    -webkit-appearance: none;
+    font-size: 2rem;
+    
+}
+
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+button {
+    width: 22%;
+    height: 70px;
+    margin-left: 7.5%;
+    margin-bottom: 4%;
+    border-radius: 100%;
+    background-color: lightgray;
+    border: none;
+    font-size: 1.7rem;
+}
+
+ .end {
+    background-color: rgb(229, 99, 99);
+    font-size: 1rem;
+    i {
+        color: white;
+    }
+}
+
+ .start {
+    background-color: rgb(98, 218, 98);
+    font-size: 1rem;
+    i {
+        color: white;
+    }
+}
+
+.reset, .balance, .topup {
+    background-color: white;
+    color: grey;
+    font-size: 1rem;
+    border-radius: 0;
+    margin-top: 10%;
+}
+
+button span {
+    
+    font-size: .9rem;
+    line-height: 0;
+}
+
+i {
+    color: grey;
+    font-size: 1.5rem;
+}

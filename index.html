@@ -5,20 +5,72 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="scss/style.css">
     <script src="js/script.js"></script>
 </head>
 <body>
-    <button type="button"onclick="startcall()">Call</button>
-    <button type="button" onclick="endcall()">Endcall</button>
-    <button type="button" onclick="reset()">Reset</button>
-    <button type="button" onclick="balance()">Balance</button>
-    <input type="number" name="topup" placeholder="Insert TopUp amount">
-    <button type="button" onclick="topUp()">Topup</button>
     <div class="container">
-       
-
+        <div class="User1">
+            <input type="number" name="John" placeholder="Insert TopUp amount">
+            <button>1<span></span></button>
+            <button>2<span>abc</span></button>
+            <button>3<span>def</span></button>
+            <button>4<span>ghi</span></button>
+            <button>5<span>jkl</span></button>
+            <button>6<span>mno</span></button>
+            <button>7<span>pqrs</span></button>
+            <button>8<span>tuv</span></button>
+            <button>9<span>vwxz</span></button>
+            <button class="start" type="button"onclick="startcall(FirstUser)"><i class="bi-telephone-fill"></i></button>
+            <button>0</button>
+            <button class="end" type="button" onclick="endcall(FirstUser)"><i class="bi-telephone-x-fill"></i></button>
+            <button class="reset" type="button" onclick="reset(FirstUser)"><i class="bi-x-octagon-fill"></i>Reset</button>
+            <button class="balance" type="button" onclick="balance(FirstUser)"><i class="bi-bank2"></i>Balance</button>
+            <button class="topup"type="button" onclick="topUp(FirstUser)"><i class="bi-arrow-up-circle-fill"></i>Topup</button>
+            <p class="John"></p>
+        </div> 
+        <div class="User2">
+            <input type="number" name="Tim" placeholder="Insert TopUp amount">
+            <button type="text" onclick="getnumber(SecondUser,'1')">1<span></span></button>
+            <button type="text" onclick="getnumber(SecondUser,'2')">2<span>abc</span></button>
+            <button type="text" onclick="getnumber(SecondUser,'3')">3<span>def</span></button>
+            <button type="text" onclick="getnumber(SecondUser,'4')">4<span>ghi</span></button>
+            <button type="text" onclick="getnumber(SecondUser,'5')">5<span>jkl</span></button>
+            <button type="text" onclick="getnumber(SecondUser,'6')">6<span>mno</span></button>
+            <button type="text" onclick="getnumber(SecondUser,'7')">7<span>pqrs</span></button>
+            <button type="text" onclick="getnumber(SecondUser,'8')">8<span>tuv</span></button>
+            <button type="text" onclick="getnumber(SecondUser,'9')">9<span>vwxz</span></button>
+            <button class="start"type="button"onclick="startcall(SecondUser)"><i class="bi-telephone-fill"></i></button>
+            <button type="text" onclick="getnumber(SecondUser,'0')">0</button>
+            <button class="end" type="button" onclick="endcall(SecondUser)"><i class="bi-telephone-x-fill"></i></button>
+            <button class="reset" type="button" onclick="reset(SecondUser)"><i class="bi-x-octagon-fill"></i>Reset</button>
+            <button class="balance" type="button" onclick="balance(SecondUser)"><i class="bi-bank2"></i>Balance</button>
+            <button class="topup" type="button" onclick="topUp(SecondUser)"><i class="bi-arrow-up-circle-fill"></i>Topup</button>
+            <p class="Tim"></p>
+        </div> 
+        <div class="User3">
+            <input type="number" name="Mary" placeholder="Insert TopUp amount">
+            <button>1<span></span></button>
+            <button>2<span>abc</span></button>
+            <button>3<span>def</span></button>
+            <button>4<span>ghi</span></button>
+            <button>5<span>jkl</span></button>
+            <button>6<span>mno</span></button>
+            <button>7<span>pqrs</span></button>
+            <button>8<span>tuv</span></button>
+            <button>9<span>vwxz</span></button>
+            <button class="start" type="button"onclick="startcall(ThirdUser)"><i class="bi-telephone-fill"></i></button>
+            <button>0</button>
+            <button class="end" type="button" onclick="endcall(ThirdUser)"><i class="bi-telephone-x-fill"></i></button>
+            <button class="reset" type="button" onclick="reset(ThirdUser)"><i class="bi-x-octagon-fill"></i>Reset</button>
+            <button class="balance" type="button" onclick="balance(ThirdUser)"><i class="bi-bank2"></i>Balance</button>
+            <button class="topup" type="button" onclick="topUp(ThirdUser)"><i class="bi-arrow-up-circle-fill"></i>Topup</button>
+            <p class="Mary"></p>
+        </div> 
     </div>
-
+    
+    
+    
 </body>
 </html>

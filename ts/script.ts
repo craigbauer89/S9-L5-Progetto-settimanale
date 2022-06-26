@@ -67,6 +67,8 @@ get calls():number {
     }
 }
 let FirstUser = new Smartphone("John" , 100, 0, 0);
+let SecondUser = new Smartphone("Tim" , 200, 0, 0);
+let ThirdUser = new Smartphone("Mary" , 50, 0, 0);
 // console.log("User's Name: " + FirstUser.firstname);
 // console.log("Minutes Used: " + FirstUser.minutes);
 // console.log("User's Balance: " +FirstUser.balance);
@@ -117,11 +119,11 @@ function leadingzero(i:any) {
   }
 
 
-function startcall() {
-    clearInterval(myInterval);
-     if (FirstUser.numero404() > 0) {
+function startcall(User:Smartphone) {
+    // clearInterval(myInterval);
+     if (User.numero404() > 0) {
 
-        let box = document.querySelector('.container');
+        let box = document.querySelector('.'+ User.firstname +'');
         if(box !== null){
             box.innerHTML = `Calling.......`
             }   
@@ -129,13 +131,16 @@ function startcall() {
             mins = leadingzero(0);
             hrs = leadingzero(0);
             
-        minutiDurata = FirstUser.minutes;
-        let credit = FirstUser.numero404();
+        minutiDurata = User.minutes;
+        minutiDurata++;
+        let credit = User.numero404();
             setTimeout(() => { myInterval =setInterval(function() {    
                 secs++
                 secs = leadingzero(secs);
                 if (secs >=60) {
-
+                    minutiDurata++;
+                    credit = credit- .2;
+                    console.log(credit);
                     secs = leadingzero(0);
                     mins++;
                     mins = leadingzero(mins);
@@ -146,14 +151,13 @@ function startcall() {
                     hrs++;
                     hrs = leadingzero(hrs);
                 }
-                minutiDurata++;
+                
                 if(box !== null){
                     box.innerHTML = ` ${hrs} : ${mins} : ${secs}`      
                     } 
-                credit = credit- .2;
-                console.log(credit);
+                
                 if (credit <= 0) {
-                    endcall();
+                    endcall(User);
                     alert("Credit ran out!")
                 }
                 
@@ -166,23 +170,23 @@ function startcall() {
     }
 }
 
-function endcall() {
+function endcall(User:Smartphone) {
     
     clearInterval(myInterval);
-    FirstUser.getNumeroChiamate();
-    FirstUser.minutes = minutiDurata; 
-    printdata();
+    User.getNumeroChiamate();
+    User.minutes = minutiDurata; 
+    printdata(User);
 }
 
 
-function reset() {
+function reset(User:Smartphone) {
     clearInterval(myInterval);
-    FirstUser.azzeraChiamate();
-    let box = document.querySelector('.container');
+    User.azzeraChiamate();
+    let box = document.querySelector('.'+ User.firstname +'');
     // let data = document.createElement('p');
     if(box !== null){
         box.innerHTML = `
-                        Your balance is: ${FirstUser.balance}
+                        Your balance is: ${User.balance}
                           
                           `
                         //   box.append(data);
@@ -192,50 +196,52 @@ function reset() {
 }
 
 
-function printdata() {
+function printdata(User:Smartphone) {
     // cleardata()
-    let box = document.querySelector('.container');
+    let box = document.querySelector('.'+ User.firstname +'');
     // let data = document.createElement('p');
     if(box !== null){
         box.innerHTML = `
-                          Number of minutes: ${FirstUser.minutes}
-                          Number of calls: ${FirstUser.calls}
+                          User: ${User.firstname} </br>
+                          Number of minutes: ${User.minutes}  </br>
+                          Number of calls: ${User.calls}
                           `
                         //   box.append(data);
                         }                    
     
 }
 
-function balance() {
+function balance(User:Smartphone) {
     // cleardata()
-    let box = document.querySelector('.container');
+    let box = document.querySelector('.'+ User.firstname +'');
     // let data = document.createElement('p');
     if(box !== null){
-    box.innerHTML = `Your balance is: ${FirstUser.numero404()}`
+    box.innerHTML = `User: ${User.firstname}  </br>
+                     Balance: ${User.numero404()}`
     // box.append(data);
                         }                    
     
 }
 
 
-function topUp() {
+function topUp(User:Smartphone) {
     
-    let amount = <HTMLInputElement>document.querySelector('input[name="topup"]')
+    let amount = <HTMLInputElement>document.querySelector('input[name="' + User.firstname + '"]')
     
     if(amount !== null){
         let number = amount.value;
-        
+        console.log(number);
         if (number !== '') {
-        FirstUser.ricarica(parseInt(number));
+            User.ricarica(parseInt(number));
         } else {
             alert("must enter a number");
         }
         amount.value =  ' ';
     }
-    let box = document.querySelector('.container');
+    let box = document.querySelector('.'+ User.firstname +'');
     // let data = document.createElement('p');
     if(box !== null){
-    box.innerHTML = `Your balance is: ${FirstUser.numero404()}`
+    box.innerHTML = `User: ${User.firstname} balance is: ${User.numero404()}`
     // box.append(data);
 
 }
@@ -251,6 +257,12 @@ function topUp() {
 //     }
 // }
 
+
+function getnumber(User:Smartphone, param:string) {
+	let amount = <HTMLInputElement>document.querySelector('input[name="' + User.firstname + '"]')
+    amount.value +=  param;
+
+}
 
 
 
