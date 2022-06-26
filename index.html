@@ -10,28 +10,37 @@
     <script src="js/script.js"></script>
 </head>
 <body>
+    <header class="box1">
+        <h1>John</h1>
+        <h1>Tim</h1>
+        <h1>Mary</h1>
+    </header>
     <div class="container">
         <div class="User1">
-            <input type="number" name="John" placeholder="Insert TopUp amount">
-            <button>1<span></span></button>
-            <button>2<span>abc</span></button>
-            <button>3<span>def</span></button>
-            <button>4<span>ghi</span></button>
-            <button>5<span>jkl</span></button>
-            <button>6<span>mno</span></button>
-            <button>7<span>pqrs</span></button>
-            <button>8<span>tuv</span></button>
-            <button>9<span>vwxz</span></button>
+            <p class="John"></p>
+            <input type="number" name="John">
+            <button class="clear" type="button" onclick="reset2(FirstUser)"><i class="bi-x-square-fill"></i>Reset</button>
+            <button type="text" onclick="getnumber(FirstUser,'1')">1<span></span></button>
+            <button type="text" onclick="getnumber(FirstUser,'2')">2<span>abc</span></button>
+            <button type="text" onclick="getnumber(FirstUser,'3')">3<span>def</span></button>
+            <button type="text" onclick="getnumber(FirstUser,'4')">4<span>ghi</span></button>
+            <button type="text" onclick="getnumber(FirstUser,'5')">5<span>jkl</span></button>
+            <button type="text" onclick="getnumber(FirstUser,'6')">6<span>mno</span></button>
+            <button type="text" onclick="getnumber(FirstUser,'7')">7<span>pqrs</span></button>
+            <button type="text" onclick="getnumber(FirstUser,'8')">8<span>tuv</span></button>
+            <button type="text" onclick="getnumber(FirstUser,'9')">9<span>vwxz</span></button>
             <button class="start" type="button"onclick="startcall(FirstUser)"><i class="bi-telephone-fill"></i></button>
-            <button>0</button>
+            <button type="text" onclick="getnumber(FirstUser,'0')">0</button>
             <button class="end" type="button" onclick="endcall(FirstUser)"><i class="bi-telephone-x-fill"></i></button>
             <button class="reset" type="button" onclick="reset(FirstUser)"><i class="bi-x-octagon-fill"></i>Reset</button>
             <button class="balance" type="button" onclick="balance(FirstUser)"><i class="bi-bank2"></i>Balance</button>
             <button class="topup"type="button" onclick="topUp(FirstUser)"><i class="bi-arrow-up-circle-fill"></i>Topup</button>
-            <p class="John"></p>
+            
         </div> 
         <div class="User2">
-            <input type="number" name="Tim" placeholder="Insert TopUp amount">
+            <p class="Tim"></p>
+            <input type="number" name="Tim">
+            <button class="clear" type="button" onclick="reset2(SecondUser)"><i class="bi-x-square-fill"></i>Reset</button>
             <button type="text" onclick="getnumber(SecondUser,'1')">1<span></span></button>
             <button type="text" onclick="getnumber(SecondUser,'2')">2<span>abc</span></button>
             <button type="text" onclick="getnumber(SecondUser,'3')">3<span>def</span></button>
@@ -47,26 +56,28 @@
             <button class="reset" type="button" onclick="reset(SecondUser)"><i class="bi-x-octagon-fill"></i>Reset</button>
             <button class="balance" type="button" onclick="balance(SecondUser)"><i class="bi-bank2"></i>Balance</button>
             <button class="topup" type="button" onclick="topUp(SecondUser)"><i class="bi-arrow-up-circle-fill"></i>Topup</button>
-            <p class="Tim"></p>
+            
         </div> 
         <div class="User3">
-            <input type="number" name="Mary" placeholder="Insert TopUp amount">
-            <button>1<span></span></button>
-            <button>2<span>abc</span></button>
-            <button>3<span>def</span></button>
-            <button>4<span>ghi</span></button>
-            <button>5<span>jkl</span></button>
-            <button>6<span>mno</span></button>
-            <button>7<span>pqrs</span></button>
-            <button>8<span>tuv</span></button>
-            <button>9<span>vwxz</span></button>
+            <p class="Mary"></p>
+            <input type="number" name="Mary">
+            <button class="clear" type="button" onclick="reset2(ThirdUser)"><i class="bi-x-square-fill"></i>Reset</button>
+            <button type="text" onclick="getnumber(ThirdUser,'1')">1<span></span></button>
+            <button type="text" onclick="getnumber(ThirdUser,'2')">2<span>abc</span></button>
+            <button type="text" onclick="getnumber(ThirdUser,'3')">3<span>def</span></button>
+            <button type="text" onclick="getnumber(ThirdUser,'4')">4<span>ghi</span></button>
+            <button type="text" onclick="getnumber(ThirdUser,'5')">5<span>jkl</span></button>
+            <button type="text" onclick="getnumber(ThirdUser,'6')">6<span>mno</span></button>
+            <button type="text" onclick="getnumber(ThirdUser,'7')">7<span>pqrs</span></button>
+            <button type="text" onclick="getnumber(ThirdUser,'8')">8<span>tuv</span></button>
+            <button type="text" onclick="getnumber(ThirdUser,'9')">9<span>vwxz</span></button>
             <button class="start" type="button"onclick="startcall(ThirdUser)"><i class="bi-telephone-fill"></i></button>
-            <button>0</button>
+            <button type="text" onclick="getnumber(ThirdUser,'0')">0</button>
             <button class="end" type="button" onclick="endcall(ThirdUser)"><i class="bi-telephone-x-fill"></i></button>
             <button class="reset" type="button" onclick="reset(ThirdUser)"><i class="bi-x-octagon-fill"></i>Reset</button>
             <button class="balance" type="button" onclick="balance(ThirdUser)"><i class="bi-bank2"></i>Balance</button>
             <button class="topup" type="button" onclick="topUp(ThirdUser)"><i class="bi-arrow-up-circle-fill"></i>Topup</button>
-            <p class="Mary"></p>
+           
         </div> 
     </div>
     

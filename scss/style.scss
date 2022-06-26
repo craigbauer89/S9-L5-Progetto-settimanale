@@ -2,11 +2,29 @@
 // @import '../node_modules/bootstrap-icons/font/bootstrap-icons.scss';
 
 
+header {
+    margin-top: 2%;
+    display: flex;
+    flex-wrap: wrap;
+    height: 50px;
+
+
+    h1 {
+        width: 33.3%;
+        
+        justify-content: space-between;
+        text-align: center;
+    }
+    
+}
+
 .container {
-    margin: 5% auto;
+    
+    margin: 1% auto;
     display: flex;
     flex-wrap: wrap;
     border: none;
+    
 }
 
 div {
@@ -19,13 +37,24 @@ div {
 }
 
 input {
-    width:94%;
-    height: 75px;
-    margin: 10% 3%;
+    width:70%;
+    height: 50px;
+    margin: 0 3%;
+    margin-bottom: 10%;
     border: none;
     -webkit-appearance: none;
     font-size: 2rem;
     
+    
+}
+
+.clear {
+    width: 10%;
+    height: 50px;
+    background-color: white;
+    color: grey;
+    font-size: 2rem;
+    margin-bottom: 10%;
 }
 
 input::-webkit-inner-spin-button {
@@ -59,6 +88,8 @@ button {
     }
 }
 
+
+
 .reset, .balance, .topup {
     background-color: white;
     color: grey;
@@ -76,4 +107,91 @@ button span {
 i {
     color: grey;
     font-size: 1.5rem;
+}
+
+p {
+    margin: 3%;
+    
+    height: 25px;
+}
+
+
+.container {
+
+    :nth-child(1) {
+        input {
+            background-color:white;
+            color: black;
+        }
+
+        .clear {
+            background-color: white;
+            color: grey;
+        }
+    }
+   
+    :nth-child(2) {
+        background-color: black;
+        color: white;
+
+        .clear {
+            background-color: black;
+            color: white;
+
+            i {
+                color: white;
+            }
+        }
+
+      
+        input {
+            color:white;
+        }
+
+        button {
+            color: black;
+        }
+
+        .reset, .balance, .topup {
+            background-color: black;
+            color: white;
+            
+            i {
+                color: white;
+            }
+        }
+    }
+
+    :nth-child(3) {
+        background-color: rgb(106, 93, 93);
+        color: white;
+
+        .clear {
+            background-color: transparent;
+            color: white;
+
+            i {
+                color: white;
+            }
+        }
+
+      
+        input {
+            background-color: transparent;
+            color:white;
+        }
+
+        button {
+            color: black;
+        }
+
+        .reset, .balance, .topup {
+            background-color: transparent;
+            color: white;
+            
+            i {
+                color: white;
+            }
+        }
+    }
 }

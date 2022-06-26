@@ -83,6 +83,14 @@ let secs;
 let mins;
 let hrs;
 let CreditAvailable;
+function reset2(User) {
+    let amount = document.querySelector('input[name="' + User.firstname + '"]');
+    amount.value = '';
+    let box = document.querySelector('.' + User.firstname + '');
+    if (box !== null) {
+        box.innerHTML = '';
+    }
+}
 function leadingzero(i) {
     if (i < 10) {
         i = '0' + i;
@@ -141,13 +149,15 @@ function endcall(User) {
     printdata(User);
 }
 function reset(User) {
+    let amount = document.querySelector('input[name="' + User.firstname + '"]');
+    amount.value = '';
     clearInterval(myInterval);
     User.azzeraChiamate();
     let box = document.querySelector('.' + User.firstname + '');
     // let data = document.createElement('p');
     if (box !== null) {
         box.innerHTML = `
-                        Your balance is: ${User.balance}
+                        Calls, minutes and balance reset to: ${User.balance}
                           
                           `;
         //   box.append(data);
@@ -155,24 +165,28 @@ function reset(User) {
 }
 function printdata(User) {
     // cleardata()
+    let amount = document.querySelector('input[name="' + User.firstname + '"]');
+    amount.value = `${User.minutes}`;
     let box = document.querySelector('.' + User.firstname + '');
     // let data = document.createElement('p');
     if (box !== null) {
         box.innerHTML = `
-                          User: ${User.firstname} </br>
-                          Number of minutes: ${User.minutes}  </br>
-                          Number of calls: ${User.calls}
+                          
+                          Number of minutes:
+                          
                           `;
         //   box.append(data);
     }
 }
 function balance(User) {
     // cleardata()
+    let amount = document.querySelector('input[name="' + User.firstname + '"]');
+    amount.value = `${User.numero404()}`;
     let box = document.querySelector('.' + User.firstname + '');
     // let data = document.createElement('p');
     if (box !== null) {
-        box.innerHTML = `User: ${User.firstname}  </br>
-                     Balance: ${User.numero404()}`;
+        box.innerHTML = `
+                     Balance: `;
         // box.append(data);
     }
 }
@@ -187,12 +201,12 @@ function topUp(User) {
         else {
             alert("must enter a number");
         }
-        amount.value = ' ';
+        amount.value = `${User.numero404()}`;
     }
     let box = document.querySelector('.' + User.firstname + '');
     // let data = document.createElement('p');
     if (box !== null) {
-        box.innerHTML = `User: ${User.firstname} balance is: ${User.numero404()}`;
+        box.innerHTML = `Balance:`;
         // box.append(data);
     }
 }

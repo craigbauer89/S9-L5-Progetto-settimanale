@@ -1,6 +1,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
-
+    
     console.log('Page Loaded');
 });
 
@@ -113,15 +113,31 @@ let mins:number;
 let hrs:number;
 let CreditAvailable:boolean;
 
+
+function reset2(User:Smartphone) {
+    let amount = <HTMLInputElement>document.querySelector('input[name="' + User.firstname + '"]')
+    amount.value = '';
+    let box = document.querySelector('.'+ User.firstname +'');
+        if(box !== null){
+            box.innerHTML = '';
+            }  
+    
+    
+}
+
+
 function leadingzero(i:any) {
     if (i < 10) {i = '0'+ i}; 
     return i;
   }
 
 
+
+
 function startcall(User:Smartphone) {
     // clearInterval(myInterval);
      if (User.numero404() > 0) {
+        
 
         let box = document.querySelector('.'+ User.firstname +'');
         if(box !== null){
@@ -180,13 +196,15 @@ function endcall(User:Smartphone) {
 
 
 function reset(User:Smartphone) {
+    let amount = <HTMLInputElement>document.querySelector('input[name="' + User.firstname + '"]')
+    amount.value = '';
     clearInterval(myInterval);
     User.azzeraChiamate();
     let box = document.querySelector('.'+ User.firstname +'');
     // let data = document.createElement('p');
     if(box !== null){
         box.innerHTML = `
-                        Your balance is: ${User.balance}
+                        Calls, minutes and balance reset to: ${User.balance}
                           
                           `
                         //   box.append(data);
@@ -198,13 +216,15 @@ function reset(User:Smartphone) {
 
 function printdata(User:Smartphone) {
     // cleardata()
+    let amount = <HTMLInputElement>document.querySelector('input[name="' + User.firstname + '"]')
+    amount.value = `${User.minutes}`;
     let box = document.querySelector('.'+ User.firstname +'');
     // let data = document.createElement('p');
     if(box !== null){
         box.innerHTML = `
-                          User: ${User.firstname} </br>
-                          Number of minutes: ${User.minutes}  </br>
-                          Number of calls: ${User.calls}
+                          
+                          Number of minutes:
+                          
                           `
                         //   box.append(data);
                         }                    
@@ -213,11 +233,13 @@ function printdata(User:Smartphone) {
 
 function balance(User:Smartphone) {
     // cleardata()
+    let amount = <HTMLInputElement>document.querySelector('input[name="' + User.firstname + '"]')
+    amount.value = `${User.numero404()}`
     let box = document.querySelector('.'+ User.firstname +'');
     // let data = document.createElement('p');
     if(box !== null){
-    box.innerHTML = `User: ${User.firstname}  </br>
-                     Balance: ${User.numero404()}`
+    box.innerHTML = `
+                     Balance: `
     // box.append(data);
                         }                    
     
@@ -236,12 +258,12 @@ function topUp(User:Smartphone) {
         } else {
             alert("must enter a number");
         }
-        amount.value =  ' ';
+        amount.value = `${User.numero404()}`;
     }
     let box = document.querySelector('.'+ User.firstname +'');
     // let data = document.createElement('p');
     if(box !== null){
-    box.innerHTML = `User: ${User.firstname} balance is: ${User.numero404()}`
+    box.innerHTML = `Balance:`
     // box.append(data);
 
 }
