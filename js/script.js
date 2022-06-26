@@ -99,47 +99,55 @@ function leadingzero(i) {
     return i;
 }
 function startcall(User) {
-    // clearInterval(myInterval);
-    if (User.numero404() > 0) {
-        let box = document.querySelector('.' + User.firstname + '');
-        if (box !== null) {
-            box.innerHTML = `Calling.......`;
-        }
-        secs = leadingzero(0);
-        mins = leadingzero(0);
-        hrs = leadingzero(0);
-        minutiDurata = User.minutes;
-        minutiDurata++;
-        let credit = User.numero404();
-        setTimeout(() => {
-            myInterval = setInterval(function () {
-                secs++;
-                secs = leadingzero(secs);
-                if (secs >= 60) {
-                    minutiDurata++;
-                    credit = credit - .2;
-                    console.log(credit);
-                    secs = leadingzero(0);
-                    mins++;
-                    mins = leadingzero(mins);
-                }
-                if (mins >= 60) {
-                    mins = leadingzero(0);
-                    hrs++;
-                    hrs = leadingzero(hrs);
-                }
-                if (box !== null) {
-                    box.innerHTML = ` ${hrs} : ${mins} : ${secs}`;
-                }
-                if (credit <= 0) {
-                    endcall(User);
-                    alert("Credit ran out!");
-                }
+    let amount = document.querySelector('input[name="' + User.firstname + '"]');
+    let number = amount.value;
+    console.log(number);
+    if (number !== '') {
+        // clearInterval(myInterval);
+        if (User.numero404() > 0) {
+            let box = document.querySelector('.' + User.firstname + '');
+            if (box !== null) {
+                box.innerHTML = `Calling.......`;
+            }
+            secs = leadingzero(0);
+            mins = leadingzero(0);
+            hrs = leadingzero(0);
+            minutiDurata = User.minutes;
+            minutiDurata++;
+            let credit = User.numero404();
+            setTimeout(() => {
+                myInterval = setInterval(function () {
+                    secs++;
+                    secs = leadingzero(secs);
+                    if (secs >= 60) {
+                        minutiDurata++;
+                        credit = credit - .2;
+                        console.log(credit);
+                        secs = leadingzero(0);
+                        mins++;
+                        mins = leadingzero(mins);
+                    }
+                    if (mins >= 60) {
+                        mins = leadingzero(0);
+                        hrs++;
+                        hrs = leadingzero(hrs);
+                    }
+                    if (box !== null) {
+                        box.innerHTML = ` ${hrs} : ${mins} : ${secs}`;
+                    }
+                    if (credit <= 0) {
+                        endcall(User);
+                        alert("Credit ran out!");
+                    }
+                }, 1000);
             }, 1000);
-        }, 1000);
+        }
+        else {
+            alert('Not enough Credit to make call. Please top up');
+        }
     }
     else {
-        alert('Not enough Credit to make call. Please top up');
+        alert("must enter a number");
     }
 }
 function endcall(User) {

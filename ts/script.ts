@@ -135,6 +135,14 @@ function leadingzero(i:any) {
 
 
 function startcall(User:Smartphone) {
+    let amount = <HTMLInputElement>document.querySelector('input[name="' + User.firstname + '"]')
+    
+    
+        let number = amount.value;
+        console.log(number);
+        if (number !== '') {
+            
+        
     // clearInterval(myInterval);
      if (User.numero404() > 0) {
         
@@ -184,6 +192,9 @@ function startcall(User:Smartphone) {
     else {
         alert('Not enough Credit to make call. Please top up')
     }
+} else {
+    alert("must enter a number");
+}
 }
 
 function endcall(User:Smartphone) {
